@@ -1,162 +1,177 @@
 <?php
-Class TableDb{
+Class tableDb{
 	public function tableAdmin($conn){
 		/*
-		| Create table Admins
-		| admin field is Nama Admin, Username Admin, Password for login admin.
+		| crerate table admin
+		| admin field is : .
 		*/
 		$tablename = "admin";
-		$cektable = "select id from ".$tablename;
+		$cektable = "select id_admin from ".$tablename;
 		if($conn->query($cektable) === FALSE){
-			/*
-			| table admin is create
-			| field create id, nama_admin, username, password, timestamps
-			*/
+
 			$sql = "CREATE TABLE ".$tablename." (
-			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-			nama_admin VARCHAR(120) NOT NULL,
-			username VARCHAR(120) unique,
-			password CHAR(255) NOT NULL,
+			id_admin INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+			name_admin VARCHAR(50) NOT NULL,
+			email_admin VARCHAR(255),
+			username VARCHAR(20) unique,
+			password CHAR(50) NOT NULL,
 			reg_date TIMESTAMP
 			)";
 			if ($conn->query($sql) === TRUE) {
 			    echo "<b>Table $tablename created successfully <br></b>";
 			} else {
-			    echo "Error creating table: " . $conn->error;
+			    echo "Error creating table : " . $conn->error."<br>";
 			}
 		}else{
 			echo "Table $tablename is Exist !!! <br>";
 		}
 	}
-	public function tableBarang($conn){	
+
+
+	public function tableDesign($conn){
 		/*
-		| Create table Barang
-		| tables of barang field is id, nama barang, harga, deskripsi, 
-		| tanggal posting, status, photo 1, photo 2, photo 3
+		| Create table Design
+		| design field is : .
 		*/
-		$tablename = "barang";
-		$cektable = "select id from ".$tablename;
+		$tablename = "design";
+		$cektable = "select id_design from ".$tablename;
+		if($conn->query($cektable) === FALSE){
+			
+			$sql = "CREATE TABLE ".$tablename." (
+			id_design INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+			id_design_category INT(6),
+			name_design VARCHAR(120) NOT NULL,
+			image_design VARCHAR(255),
+			design_date TIMESTAMP
+			)";
+			if ($conn->query($sql) === TRUE) {
+			    echo "<b>Table $tablename created successfully <br></b>";
+			} else {
+			    echo "Error creating table : " . $conn->error."<br>";
+			}
+		}else{
+			echo "Table $tablename is Exist !!! <br>";
+		}
+	}
+
+	public function DesignCategory($conn){
+		/*
+		| Create table Admins
+		| admin field is Nama Admin, Username Admin, Password for login admin.
+		*/
+		$tablename = "design_category";
+		$cektable = "select id_design_category from ".$tablename;
 		if($conn->query($cektable) === FALSE){
 			/*
 			| table admin is create
 			| field create id, nama_admin, username, password, timestamps
 			*/
 			$sql = "CREATE TABLE ".$tablename." (
-				id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-				nama_barang VARCHAR(225) NOT NULL,
-				harga INTEGER(10) NOT NULL,
-				deskripsi TEXT NOT NULL,
-				stok INTEGER(10) NOT NULL,
-				status VARCHAR(25) NOT NULL,
-				kategori_barang VARCHAR(70) NOT NULL,
-				photo_1 VARCHAR(225) NOT NULL,
-				photo_2 VARCHAR(225) NOT NULL,
-				photo_3 VARCHAR(225) NOT NULL,
-				dilihat INT(6),
-				dibeli INT(6),
-				waktu_publish TIMESTAMP
-				)";
+			id_design_category INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+			category_design VARCHAR(20)
+			)";
 			if ($conn->query($sql) === TRUE) {
 			    echo "<b>Table $tablename created successfully <br></b>";
 			} else {
-			    echo "Error creating table: " . $conn->error;
+			    echo "Error creating table : " . $conn->error."<br>";
 			}
 		}else{
 			echo "Table $tablename is Exist !!! <br>";
 		}
 	}
-	public function tableCustomer($conn){
-		/*
-		| Create table Customer
-		| tables of barang field is id, Nama_Customer, Alamat, Jenis Kelamin
-		| tanggal lahir, No.Telepon, password, tanggal registrasi.
-		*/
-		$tablename = "costumer";
-		$cektable = "select id from ".$tablename;
-		if($conn->query($cektable) === FALSE){
-			/*
-			| table costumer is create
-			| field create id, nama_admin, tanggal_lahir, alamat, jenis_kelamin, tanggal_registrasi
-			*/
-			$sql = "CREATE TABLE ".$tablename." (
-				id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-				nama_customer VARCHAR(225) NOT NULL,
-				email varchar(225) NOT NULL,
-				no_telp INT(14),
-				alamat VARCHAR(225) NOT NULL,
-				tanggl_lahir VARCHAR(20),
-				jenis_kelamin VARCHAR(25) NOT NULL,
-				tanggal_Registrasi  TIMESTAMP,
-				avatar VARCHAR(225),
-				password VARCHAR(225),
-				status_member VARCHAR(25)
-				)";
-			if ($conn->query($sql) === TRUE) {
-				echo "<b>Table $tablename created successfully <br> </b>";
-			} else {
-				echo "Error creating table: " . $conn->error;
-			}
-		}else{
-			echo "Table $tablename is Exist !!! <br>";
-		}
-	}
-	public function tabelBlogArticel($conn){
+	public function tablePartner($conn){
 		/*
 		 * This function for creating table Blog to database
 		 * table blog have field there are id, Judul artikel, Konten artikel, status, kategori, tanggal publish,
 		 * field status digunakan untuk mendeskripsikan artikel tersebut aktif atau nonaktif untuk di tampilkan di blog user.
 		 *
 		 */
-		$tablename = "blog_articel";
-		$cektable = "select id from ".$tablename;
+		$tablename = "partner";
+		$cektable = "select id_partner from ".$tablename;
 
 		if($conn->query($cektable) === FALSE){
 			/*
 			 * Jika tabel kosong didalam database maka logic ini dijalankan
 			 */
 			$sql = "CREATE TABLE ".$tablename." (
-				id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-				judul_artikel VARCHAR(225) NOT NULL,
-				kontent_artikel TEXT,
+				id_partner INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+				name_partner VARCHAR(120) NOT NULL,
+				about_partner TEXT,
+				image_partner VARCHAR(255),
 				status VARCHAR(10) NOT NULL,
-				kategori VARCHAR(255) NOT NULL,
-				tanggal_publish TIMESTAMP,
+				partner_time TIMESTAMP,
 				view INT(6)
 				)";
 			if($conn->query($sql) === TRUE){
 				echo "<b>Table $tablename created Succesfully <br></b>";
 			}else{
-				echo "Error Creating tbale : ". $conn->error;
+				echo "Error creating tbale : ". $conn->error."<br>";
 			}
 		}else{
 			/*
 			 * else statement if condition cek tables is done
 			 * and table creating already exist.
 			 */
-			echo "<br>Table $tablename is Exist !!! <br>";
+			echo "Table $tablename is Exist !!! <br>";
 		}
 	}
-	public function categoryArticel($conn){
+	public function blogArticle($conn){
+		/*
+		 * This function for creating table Blog to database
+		 * table blog have field there are id, Judul artikel, Konten artikel, status, kategori, tanggal publish,
+		 * field status digunakan untuk mendeskripsikan artikel tersebut aktif atau nonaktif untuk di tampilkan di blog user.
+		 *
+		 */
+		$tablename = "blog_article";
+		$cektable = "select id_article from ".$tablename;
+
+		if($conn->query($cektable) === FALSE){
+			/*
+			 * Jika tabel kosong didalam database maka logic ini dijalankan
+			 */
+			$sql = "CREATE TABLE ".$tablename." (
+				id_article INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+				id_blog_category INT(6),
+				title_article VARCHAR(50) NOT NULL,
+				content_article TEXT,
+				status VARCHAR(10) NOT NULL,
+				blog_time TIMESTAMP,
+				view INT(6)
+				)";
+			if($conn->query($sql) === TRUE){
+				echo "<b>Table $tablename created Succesfully <br></b>";
+			}else{
+				echo "Error creating tbale : ". $conn->error."<br>";
+			}
+		}else{
+			/*
+			 * else statement if condition cek tables is done
+			 * and table creating already exist.
+			 */
+			echo "Table $tablename is Exist !!! <br>";
+		}
+	}
+	public function blogCategory($conn){
 		/*
 		 * category artikel digunakan untuk menampilkan kategori pada menu list
 		 * didalam artikel, editing blog.
 		 * field yang diperlukan dalam membuat kategori berupa id dan category
 		 */
-		$tablename = "blog_category_articel";
-		$cektable = "select id from ".$tablename;
+		$tablename = "blog_category";
+		$cektable = "select id_blog_category from ".$tablename;
 
 		if($conn->query($cektable) === FALSE){
 			/*
 			 * Jika tabel kosong didalam database maka logic ini dijalankan
 			 */
 			$sql = "CREATE TABLE ".$tablename." (
-				id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-				category VARCHAR(225) NOT NULL
+				id_blog_category INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+				category_blog VARCHAR(20) NOT NULL
 				)";
 			if($conn->query($sql) === TRUE){
 				echo "<b>Table $tablename created Succesfully<br></b>";
 			}else{
-				echo "Error Creating tbale : ". $conn->error;
+				echo "Error creating tbale : ". $conn->error."<br>";
 			}
 		}else{
 			/*
@@ -166,30 +181,31 @@ Class TableDb{
 			echo "Table $tablename is Exist !!! <br>";
 		}
 	}
-	public function blogComentar($conn){
+	public function blogComment($conn){
 		/*
 		 * function blogComentar digunakan untuk membuat tabel komentar
 		 * pada kontent blog. dimana tabel komentar ini berisi field berupa :
 		 *
 		 */
-		$tablename = "blog_comentar_articel";
-		$cektable = "select id from ".$tablename;
+		$tablename = "blog_comment";
+		$cektable = "select id_comment from ".$tablename;
 
 		if($conn->query($cektable) === FALSE){
 			/*
 			 * Jika tabel kosong didalam database maka logic ini dijalankan
 			 */
 			$sql = "CREATE TABLE ".$tablename." (
-				id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+				id_comment INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 				id_articel INT(6) NOT NULL,
-				nama_komentator VARCHAR(255),
-				isi_komentar TEXT,
-				waktu TIMESTAMP
+				name_comment VARCHAR(120),
+				email_comment VARCHAR(50),
+				content_comment TEXT,
+				comment_time TIMESTAMP
 				)";
 			if($conn->query($sql) === TRUE){
 				echo "<b>Table $tablename created Succesfully<br></b>";
 			}else{
-				echo "Error Creating tbale : ". $conn->error;
+				echo "Error creating tbale : ". $conn->error."<br>";
 			}
 		}else{
 			/*
@@ -199,30 +215,30 @@ Class TableDb{
 			echo "Table $tablename is Exist !!! <br>";
 		}
 	}
-	public function bannerBanground($conn){
+	public function bannerBackground($conn){
 		/*
 		 * function blogComentar digunakan untuk membuat tabel komentar
 		 * pada kontent blog. dimana tabel komentar ini berisi field berupa :
 		 *
 		 */
-		$tablename = "Banner";
-		$cektable = "select id from ".$tablename;
+		$tablename = "banner";
+		$cektable = "select id_banner from ".$tablename;
 
 		if($conn->query($cektable) === FALSE){
 			/*
 			 * Jika tabel kosong didalam database maka logic ini dijalankan
 			 */
 			$sql = "CREATE TABLE ".$tablename." (
-				id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-				judul INT(6) NOT NULL,
-				photo VARCHAR(255),
-				status VARCHAR(25),
-				waktu TIMESTAMP
+				id_banner INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+				title_banner VARCHAR(50) NOT NULL,
+				image_banner VARCHAR(255),
+				status_banner VARCHAR(10),
+				update_time TIMESTAMP
 				)";
 			if($conn->query($sql) === TRUE){
 				echo "<b>Table $tablename created Succesfully<br></b>";
 			}else{
-				echo "Error Creating tbale : ". $conn->error;
+				echo "Error creating tbale : ". $conn->error."<br>";
 			}
 		}else{
 			/*
@@ -232,59 +248,31 @@ Class TableDb{
 			echo "Table $tablename is Exist !!! <br>";
 		}
 	}
-	public function keranjang($conn){
-		$tablename = "keranjang";
-		$cektable = "select id from ".$tablename;
-
-		if($conn->query($cektable) === FALSE){
-			/*
-			 * Jika tabel kosong didalam database maka logic ini dijalankan
-			 */
-			$sql = "CREATE TABLE ".$tablename." (
-				id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-				id_produk INT(6) NOT NULL,
-				id_session INT(6) NOT NULL,
-				jumlah INT(6) NOT NULL,
-				waktu TIMESTAMP
-				)";
-			if($conn->query($sql) === TRUE){
-				echo "<b>Table $tablename created Succesfully<br></b>";
-			}else{
-				echo "Error Creating tbale : ". $conn->error;
-			}
-		}else{
-			/*
-			 * else statement if condition cek tables is done
-			 * and table creating already exist.
-			 */
-			echo "Table $tablename is Exist !!! <br>";
-		}
-	}
-	public function ContactUS($conn){
+	public function ContactUs($conn){
 		/*
 		 * function Contack digunakan untuk membuat tabel kontak
 		 * pada halaman hubungi kami. dimana tabel ini berisi field berupa :
 		 *
 		 */
-		$tablename = "kontak_kami";
-		$cektable = "select id from ".$tablename;
+		$tablename = "contact_us";
+		$cektable = "select id_contact from ".$tablename;
 
 		if($conn->query($cektable) === FALSE){
 			/*
 			 * Jika tabel kosong didalam database maka logic ini dijalankan
 			 */
 			$sql = "CREATE TABLE ".$tablename." (
-				id_kontak INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-				nama_kontak VARCHAR(50) NOT NULL,
-				email_kontak VARCHAR(255),
-				subjek_kontak VARCHAR(100),
-				isi_pesan TEXT,
-				waktu TIMESTAMP
+				id_contact INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+				name_contact VARCHAR(120) NOT NULL,
+				email_contact VARCHAR(50),
+				subject_contact VARCHAR(255),
+				messages TEXT,
+				contact_time TIMESTAMP
 				)";
 			if($conn->query($sql) === TRUE){
 				echo "<b>Table $tablename created Succesfully<br></b>";
 			}else{
-				echo "Error Creating table : ". $conn->error;
+				echo "Error creating table : ". $conn->error."<br>";
 			}
 		}else{
 			/*

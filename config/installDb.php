@@ -1,11 +1,11 @@
 <?php
 	/*
 	 * Untuk Menginstal Tabel ke database
-	 * silahkan jalankan file installing_and CheckDb ini
+	 * silahkan jalankan file installDb ini
 	 * agar semua database configurasi dari file TableDb dapat bermigrasi ke database Admin
 	 */
 
-	include "../config/Dbconnect.php";
+	include "../config/connectDb.php";
 
 	if($conn == TRUE) { 
 		// Check connection jika conection tersambung.
@@ -18,20 +18,20 @@
 	}
 
 	function tabel($conn){
-		include "../config/TableDb.php";
-		//instace from class TableDb
-		$tabeldb = new TableDb();
+		include "../config/tableDb.php";
+		//instace from class tableDb
+		$tabelDb = new tableDb();
 
 		//calling FUNCTION and parameter from class TableDb
-		$tabeldb->tableAdmin($conn);
-		$tabeldb->tableBarang($conn);
-		$tabeldb->tabelBlogArticel($conn);
-		$tabeldb->categoryArticel($conn);
-		$tabeldb->blogComentar($conn);
-		$tabeldb->tableCustomer($conn);
-		$tabeldb->bannerBanground($conn);
-		$tabeldb->keranjang($conn);
-		$tabeldb->ContactUS($conn);
+		$tabelDb->tableAdmin($conn);
+		$tabelDb->tableDesign($conn);
+		$tabelDb->designCategory($conn);
+		$tabelDb->tablePartner($conn);
+		$tabelDb->blogArticle($conn);
+		$tabelDb->blogCategory($conn);
+		$tabelDb->blogComment($conn);
+		$tabelDb->bannerBackground($conn);
+		$tabelDb->contactUs($conn);
 	}
 
 	//jalankan function

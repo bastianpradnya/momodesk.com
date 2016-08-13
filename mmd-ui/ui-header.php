@@ -4,8 +4,8 @@
 	<div class="header">
 		<div class="logo">
 			<a href="index.php">
-				<img src="images/lg.png" alt=""/>
-				<h1>ERACLE</h1>
+				<img src="images/logo/logo6.png" alt=""/>
+				<!--- <h1>ERACLE</h1> ---->
 				<div class="clear"> </div>
 			 </a>
 		</div>

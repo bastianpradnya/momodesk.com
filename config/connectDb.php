@@ -1,15 +1,15 @@
 <?php
 	$servername = "localhost";
-	$dbusername = "root";
-	$dbpassword = "";
+	$usrname = "root";
+	$paswd = "";
 
-	// Create connection
-	$conn = new mysqli($servername, $dbusername, $dbpassword);
+	// Membuat connection
+	$conn = new mysqli($servername, $usrname, $paswd);
 	if ($conn->connect_error) { // Check connection
 	    die("Connection failed: " . $con->connect_error);
 	}
 
-	$dbname = "JFRC";
+	$dbname = "momodsk";
 	$dbselect = mysqli_select_db($conn, $dbname);
 	if($dbselect == TRUE){ //cek dB
 	}else{

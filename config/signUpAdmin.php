@@ -6,13 +6,13 @@
  * variabel nama_admin dari input data admin
  * variabel username dari inputdata form username
  * variabel password dari input data password
- * variabel conn dari variabel koneksi yang digunakan untuk proses query dari file DbConnect.php directory config
+ * variabel conn dari variabel koneksi yang digunakan untuk proses query dari file connectDb.php directory config
  */
 function saveData($namaAdmin, $username, $password, $conn){
     //query data
     $sql = "INSERT INTO admin (nama_admin, username, password )VALUES ('$namaAdmin', '$username', '$password')";
 
-    if ($conn->query($sql) === TRUE) {
+    if ($conn->query($sql) === TRUE){
         //echo "New record created successfully";
         /*
          * Jika record berhasil disimpan maka dilakukan direct halaman
@@ -22,7 +22,7 @@ function saveData($namaAdmin, $username, $password, $conn){
                 <b>Silahkan Login ke <a href='../admin/'>Admin</a></b> 
             <br><br><hr>";
 
-    } else {
+    }else{
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
@@ -38,7 +38,7 @@ $formWarning =  array(null, null, null, null);
 $namaAdmin =  $username = $pass =  $password = null;
 
 //panggil database connect untuk proses query
-include "../config/Dbconnect.php";
+include "../config/connectDb.php";
 
 //validasi jika form terkirim adalah POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -48,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pass = $_POST['pass'];
     $password = $_POST['password'];
 
+//memastikan form terisi dengan benar
     if(empty($namaAdmin) || empty($username) || empty($pass) || empty($password)){
 
         if (empty($namaAdmin)) {
@@ -68,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
     }else{
-
+//mengecek apakah username sudah ada atau belum dan validasi password
         $query = "SELECT 1 FROM admin WHERE username = '$username'";
         $result = $conn->query($query);
 
@@ -87,6 +88,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
+<!--- 
+* penggunaan tag CSS pada form di bawah ini tidak muncul karena file css nya tidak ada.
+* ini merupakan contoh script untuk meletakan pesan error pada form yang menggunakan CSS
+---->
 
 <form method="post" action="#" class="form-horizontal">
     <div class="form-group <?php echo $formWarning[0] ?>">
