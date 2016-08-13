@@ -39,10 +39,11 @@ Class tableDb{
 			
 			$sql = "CREATE TABLE ".$tablename." (
 			id_design INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-			id_design_category INT(6),
 			name_design VARCHAR(120) NOT NULL,
 			image_design VARCHAR(255),
 			design_date TIMESTAMP
+			FOREIGN KEY fk_design_category(id_design_category)
+      		REFERENCES design_category(id_design_category)
 			)";
 			if ($conn->query($sql) === TRUE) {
 			    echo "<b>Table $tablename created successfully <br></b>";
@@ -98,7 +99,7 @@ Class tableDb{
 				name_partner VARCHAR(120) NOT NULL,
 				about_partner TEXT,
 				image_partner VARCHAR(255),
-				status VARCHAR(10) NOT NULL,
+				status ENUM('published','unpublished'),
 				partner_time TIMESTAMP,
 				view INT(6)
 				)";
@@ -134,7 +135,7 @@ Class tableDb{
 				id_blog_category INT(6),
 				title_article VARCHAR(50) NOT NULL,
 				content_article TEXT,
-				status VARCHAR(10) NOT NULL,
+				status ENUM('published','unpublished'),
 				blog_time TIMESTAMP,
 				view INT(6)
 				)";
@@ -232,7 +233,7 @@ Class tableDb{
 				id_banner INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 				title_banner VARCHAR(50) NOT NULL,
 				image_banner VARCHAR(255),
-				status_banner VARCHAR(10),
+				status_banner ENUM('published','unpublished'),
 				update_time TIMESTAMP
 				)";
 			if($conn->query($sql) === TRUE){
@@ -267,6 +268,7 @@ Class tableDb{
 				email_contact VARCHAR(50),
 				subject_contact VARCHAR(255),
 				messages TEXT,
+				status ENUM('read','unread'),
 				contact_time TIMESTAMP
 				)";
 			if($conn->query($sql) === TRUE){
