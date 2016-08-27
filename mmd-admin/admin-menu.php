@@ -96,6 +96,7 @@
 		                <li><a href="inbox.html"><i class="fa fa-envelope"></i>Inbox</a></li>
 		                <li><a href="calendar.html"><i class="fa fa-calendar"></i>Calender</a></li>
 		                <li><a href="inbox.html"><i class="fa fa-clipboard"></i>Tasks</a></li>
+		                <li><a href="logout.php"><i class="fa fa-sign-in"></i>Logout</a></li>
 		              </ul>
 		            </li>
 		           

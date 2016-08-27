@@ -41,8 +41,9 @@ Class tableDb{
 			id_design INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 			name_design VARCHAR(120) NOT NULL,
 			image_design VARCHAR(255),
-			design_date TIMESTAMP
-			FOREIGN KEY fk_design_category(id_design_category)
+			design_date TIMESTAMP,
+			id_design_category INT(6) NOT NULL,
+			FOREIGN KEY fk_id_design_category(id_design_category)
       		REFERENCES design_category(id_design_category)
 			)";
 			if ($conn->query($sql) === TRUE) {
@@ -106,7 +107,7 @@ Class tableDb{
 			if($conn->query($sql) === TRUE){
 				echo "<b>Table $tablename created Succesfully <br></b>";
 			}else{
-				echo "Error creating tbale : ". $conn->error."<br>";
+				echo "Error creating table : ". $conn->error."<br>";
 			}
 		}else{
 			/*
@@ -142,7 +143,7 @@ Class tableDb{
 			if($conn->query($sql) === TRUE){
 				echo "<b>Table $tablename created Succesfully <br></b>";
 			}else{
-				echo "Error creating tbale : ". $conn->error."<br>";
+				echo "Error creating table : ". $conn->error."<br>";
 			}
 		}else{
 			/*
@@ -172,7 +173,7 @@ Class tableDb{
 			if($conn->query($sql) === TRUE){
 				echo "<b>Table $tablename created Succesfully<br></b>";
 			}else{
-				echo "Error creating tbale : ". $conn->error."<br>";
+				echo "Error creating table : ". $conn->error."<br>";
 			}
 		}else{
 			/*
@@ -206,7 +207,7 @@ Class tableDb{
 			if($conn->query($sql) === TRUE){
 				echo "<b>Table $tablename created Succesfully<br></b>";
 			}else{
-				echo "Error creating tbale : ". $conn->error."<br>";
+				echo "Error creating table : ". $conn->error."<br>";
 			}
 		}else{
 			/*
@@ -239,7 +240,7 @@ Class tableDb{
 			if($conn->query($sql) === TRUE){
 				echo "<b>Table $tablename created Succesfully<br></b>";
 			}else{
-				echo "Error creating tbale : ". $conn->error."<br>";
+				echo "Error creating tabale : ". $conn->error."<br>";
 			}
 		}else{
 			/*
