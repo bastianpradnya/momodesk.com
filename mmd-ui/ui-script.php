@@ -5,7 +5,7 @@
 		<div class="logo">
 			<a href="index.php">
 				<img src="images/lg.png" alt=""/>
-				<h1>ERACLE</h1>
+				<h1>Momodesk</h1>
 				<div class="clear"> </div>
 			 </a>
 		</div>
