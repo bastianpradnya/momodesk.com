@@ -39,12 +39,10 @@ Class tableDb{
 			
 			$sql = "CREATE TABLE ".$tablename." (
 			id_design INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+			id_design_category INT(6),
 			name_design VARCHAR(120) NOT NULL,
 			image_design VARCHAR(255),
-			design_date TIMESTAMP,
-			id_design_category INT(6) NOT NULL,
-			FOREIGN KEY fk_id_design_category(id_design_category)
-      		REFERENCES design_category(id_design_category)
+			design_date TIMESTAMP
 			)";
 			if ($conn->query($sql) === TRUE) {
 			    echo "<b>Table $tablename created successfully <br></b>";
@@ -55,32 +53,36 @@ Class tableDb{
 			echo "Table $tablename is Exist !!! <br>";
 		}
 	}
-
-	public function DesignCategory($conn){
+		public function designCategory($conn){
 		/*
-		| Create table Admins
-		| admin field is Nama Admin, Username Admin, Password for login admin.
-		*/
+		 * category artikel digunakan untuk menampilkan kategori pada menu list
+		 * didalam artikel, editing blog.
+		 * field yang diperlukan dalam membuat kategori berupa id dan category
+		 */
 		$tablename = "design_category";
 		$cektable = "select id_design_category from ".$tablename;
+
 		if($conn->query($cektable) === FALSE){
 			/*
-			| table admin is create
-			| field create id, nama_admin, username, password, timestamps
-			*/
+			 * Jika tabel kosong didalam database maka logic ini dijalankan
+			 */
 			$sql = "CREATE TABLE ".$tablename." (
-			id_design_category INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-			category_design VARCHAR(20)
-			)";
-			if ($conn->query($sql) === TRUE) {
-			    echo "<b>Table $tablename created successfully <br></b>";
-			} else {
-			    echo "Error creating table : " . $conn->error."<br>";
+				id_design_category INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+				category_design VARCHAR(20) NOT NULL
+				)";
+			if($conn->query($sql) === TRUE){
+				echo "<b>Table $tablename created Succesfully<br></b>";
+			}else{
+				echo "Error creating table : ". $conn->error."<br>";
 			}
 		}else{
+			/*
+			 * else statement if condition cek tables is done
+			 * and table creating already exist.
+			 */
 			echo "Table $tablename is Exist !!! <br>";
 		}
-	}
+	}	
 	public function tablePartner($conn){
 		/*
 		 * This function for creating table Blog to database
@@ -240,7 +242,7 @@ Class tableDb{
 			if($conn->query($sql) === TRUE){
 				echo "<b>Table $tablename created Succesfully<br></b>";
 			}else{
-				echo "Error creating tabale : ". $conn->error."<br>";
+				echo "Error creating table : ". $conn->error."<br>";
 			}
 		}else{
 			/*

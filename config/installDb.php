@@ -24,8 +24,8 @@
 
 		//calling FUNCTION and parameter from class TableDb
 		$tabelDb->tableAdmin($conn);
-		$tabelDb->designCategory($conn);
 		$tabelDb->tableDesign($conn);
+		$tabelDb->designCategory($conn);
 		$tabelDb->tablePartner($conn);
 		$tabelDb->blogArticle($conn);
 		$tabelDb->blogCategory($conn);
