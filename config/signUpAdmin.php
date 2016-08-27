@@ -10,7 +10,7 @@
  */
 function saveData($namaAdmin, $username, $password, $conn){
     //query data
-    $sql = "INSERT INTO admin (nama_admin, username, password )VALUES ('$namaAdmin', '$username', '$password')";
+    $sql = "INSERT INTO admin (name_admin, username, password )VALUES ('$namaAdmin', '$username', '$password')";
 
     if ($conn->query($sql) === TRUE){
         //echo "New record created successfully";

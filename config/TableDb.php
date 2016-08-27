@@ -39,10 +39,12 @@ Class tableDb{
 			
 			$sql = "CREATE TABLE ".$tablename." (
 			id_design INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-			id_design_category INT(6),
 			name_design VARCHAR(120) NOT NULL,
 			image_design VARCHAR(255),
-			design_date TIMESTAMP
+			design_date TIMESTAMP,
+			id_design_category INT(6) NOT NULL,
+			FOREIGN KEY fk_id_design_category(id_design_category)
+      		REFERENCES design_category(id_design_category)
 			)";
 			if ($conn->query($sql) === TRUE) {
 			    echo "<b>Table $tablename created successfully <br></b>";
@@ -98,14 +100,14 @@ Class tableDb{
 				name_partner VARCHAR(120) NOT NULL,
 				about_partner TEXT,
 				image_partner VARCHAR(255),
-				status VARCHAR(10) NOT NULL,
+				status ENUM('published','unpublished'),
 				partner_time TIMESTAMP,
 				view INT(6)
 				)";
 			if($conn->query($sql) === TRUE){
 				echo "<b>Table $tablename created Succesfully <br></b>";
 			}else{
-				echo "Error creating tbale : ". $conn->error."<br>";
+				echo "Error creating table : ". $conn->error."<br>";
 			}
 		}else{
 			/*
@@ -134,14 +136,14 @@ Class tableDb{
 				id_blog_category INT(6),
 				title_article VARCHAR(50) NOT NULL,
 				content_article TEXT,
-				status VARCHAR(10) NOT NULL,
+				status ENUM('published','unpublished'),
 				blog_time TIMESTAMP,
 				view INT(6)
 				)";
 			if($conn->query($sql) === TRUE){
 				echo "<b>Table $tablename created Succesfully <br></b>";
 			}else{
-				echo "Error creating tbale : ". $conn->error."<br>";
+				echo "Error creating table : ". $conn->error."<br>";
 			}
 		}else{
 			/*
@@ -171,7 +173,7 @@ Class tableDb{
 			if($conn->query($sql) === TRUE){
 				echo "<b>Table $tablename created Succesfully<br></b>";
 			}else{
-				echo "Error creating tbale : ". $conn->error."<br>";
+				echo "Error creating table : ". $conn->error."<br>";
 			}
 		}else{
 			/*
@@ -205,7 +207,7 @@ Class tableDb{
 			if($conn->query($sql) === TRUE){
 				echo "<b>Table $tablename created Succesfully<br></b>";
 			}else{
-				echo "Error creating tbale : ". $conn->error."<br>";
+				echo "Error creating table : ". $conn->error."<br>";
 			}
 		}else{
 			/*
@@ -232,13 +234,13 @@ Class tableDb{
 				id_banner INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 				title_banner VARCHAR(50) NOT NULL,
 				image_banner VARCHAR(255),
-				status_banner VARCHAR(10),
+				status_banner ENUM('published','unpublished'),
 				update_time TIMESTAMP
 				)";
 			if($conn->query($sql) === TRUE){
 				echo "<b>Table $tablename created Succesfully<br></b>";
 			}else{
-				echo "Error creating tbale : ". $conn->error."<br>";
+				echo "Error creating tabale : ". $conn->error."<br>";
 			}
 		}else{
 			/*
@@ -267,6 +269,7 @@ Class tableDb{
 				email_contact VARCHAR(50),
 				subject_contact VARCHAR(255),
 				messages TEXT,
+				status ENUM('read','unread'),
 				contact_time TIMESTAMP
 				)";
 			if($conn->query($sql) === TRUE){

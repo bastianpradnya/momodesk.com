@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Minimal an Admin Panel Category Flat Bootstrap Responsive Website Template | Blank :: w3layouts</title>
+<title>Welcome to MomoDesk Admin Panel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Minimal Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -63,7 +63,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  	<!--banner-->	
 		     <div class="banner">
 		    	<h2>
-				<a href="index.html">Home</a>
+				<a href="index.php">Home</a>
 				<i class="fa fa-angle-right"></i>
 				<span>Blank</span>
 				</h2>

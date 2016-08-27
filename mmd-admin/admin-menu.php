@@ -6,7 +6,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-               <h1> <a class="navbar-brand" href="index.html">Minimal</a></h1>         
+               <h1> <a class="navbar-brand" href="index.php">Admin Panel</a></h1>         
 			   </div>
 			 <div class=" border-bottom">
         	<div class="full-left">
@@ -96,6 +96,7 @@
 		                <li><a href="inbox.html"><i class="fa fa-envelope"></i>Inbox</a></li>
 		                <li><a href="calendar.html"><i class="fa fa-calendar"></i>Calender</a></li>
 		                <li><a href="inbox.html"><i class="fa fa-clipboard"></i>Tasks</a></li>
+		                <li><a href="logout.php"><i class="fa fa-sign-in"></i>Logout</a></li>
 		              </ul>
 		            </li>
 		           
