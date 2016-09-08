@@ -19,7 +19,7 @@ function saveData($namaAdmin, $username, $password, $conn){
          * ke halaman manage-admin.php dengan menggunakan perintah js
          */
         echo "Data Record Berhasil Disimpan<br>
-                <b>Silahkan Login ke <a href='../admin/'>Admin</a></b> 
+                <b>Silahkan Login ke <a href='../mmd-admin/index.php'>Admin</a></b> 
             <br><br><hr>";
 
     }else{

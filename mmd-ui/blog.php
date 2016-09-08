@@ -27,10 +27,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <body>
 <!-- start header -->
-<?php
-	include "ui-header.php";
-	include "active-menu/active-blog.php";
-?>
+<?php include "ui-header.php"; include "active-menu/active-blog.php";?>
 <!--------start-blog---------->
 <div class="blog">
 	<div class="main">

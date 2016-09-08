@@ -69,7 +69,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		    	<h2>
 				<a href="index.php">Home</a>
 				<i class="fa fa-angle-right"></i>
-				<span>Blank</span>
+				<span>Design</span>
+				<i class="fa fa-angle-right"></i>
+				<span>Add Design</span>
 				</h2>
 		    </div>
 		<!--//banner-->

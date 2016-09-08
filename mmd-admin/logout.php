@@ -11,7 +11,7 @@ session_unset($_SESSION['username']);
 session_destroy();
 {
    if(!isset($_SESSION['username'])){
-       header("Location:../mmd-admin/index.php ");
+       header("Location:../mmd-admin/login.php ");
    }
 }
 ?>
